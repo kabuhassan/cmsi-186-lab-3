@@ -96,12 +96,11 @@ public abstract class TestSuite {
                 System.err.print(red(" \u2620 " + e.getMessage()));
             }
         }
-        System.out.println();
-        System.out.println("-".repeat(80));
+        System.out.printf("%n%s%n", "-".repeat(80));
         var successes = suite.totalTests - suite.failures - suite.errors;
         System.out.printf("Total  : %d%n", suite.totalTests);
-        System.out.printf(green("Passed : %d%n"), successes);
-        System.out.printf(red("Failed : %d%n"), suite.failures);
-        System.out.printf(red("Errors : %d%n"), suite.errors);
+        if (successes > 0) System.out.printf(green("Passed : %d%n"), successes);
+        if (suite.failures > 0) System.out.printf(red("Failed : %d%n"), suite.failures);
+        if (suite.errors > 0) System.out.printf(red("Errors : %d%n"), suite.errors);
     }
 }
